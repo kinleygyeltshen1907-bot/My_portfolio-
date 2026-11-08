@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Kinley Gyeltshen - 2nd year CSN student at JNEC">
+  <title>KingyelPort — Home</title>
+  <!-- 1. Bootstrap CSS (framework) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 2. Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- 3. YOUR CSS last so you can override Bootstrap -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark">
+  <header id="top">
+    <a href="index.html" class="brand">
+      <span class="logo-mark">P</span>
+      <span>Kinley<small>Network &amp; Web</small></span>
+    </a>
+    <nav id="mainNav">
+      <a href="index.html" title="Go to home page">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="education.html">Education</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" id="darkToggle" class="btn btn-sm btn-outline-secondary">Light</button>
+      <button type="button" id="menuToggle" class="btn btn-sm btn-outline-secondary" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <span class="avail"><i class="dot"></i> 2nd Year CSN Student at JNEC</span>
+        <p class="hello">KuzuZangpo La! I'm</p>
+        <h1 class="hero-name">Kinley <br>Gyeltshen</h1>
+        <h2 class="role"><span class="glow" id="typing"></span><span class="cursor">|</span></h2>
+        <p class="intro">
+          Passionate about technology, networking, and web development. I enjoy exploring new
+          technologies and building digital solutions that solve real-world problems.
+        </p>
+
+        <div class="pills">
+          <span class="pill p-tw">Networking</span>
+          <span class="pill p-react">Web Development</span>
+          <span class="pill p-node">System Administration</span>
+        </div>
+
+        <div class="cta">
+          <a href="projects.html" class="btn btn-gradient">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-ghost">Let's Talk <i class="fa-regular fa-comment"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="code-card">
+          <div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+<pre><span class="k">const</span> <span class="v">developer</span> = {
+  <span class="p">name</span>: <span class="s">"Kinley Gyeltshen"</span>,
+  <span class="p">focus</span>: [<span class="yl">"Network"</span>, <span class="yl">"Web"</span>],
+  <span class="p">passion</span>: <span class="s">"Learning"</span>
+};</pre>
+        </div>
+
+        <div class="avatar-ring">
+          <div class="avatar">
+            <!-- put your photo at media/profile.jpeg -->
+            <img id="profileImg" src="media/profile.jpeg" alt="Profile photo">
+            <span id="avatarFallback" class="avatar-fallback">KG</span>
+          </div>
+        </div>
+
+        <div class="float-badge fb-green">/</div>
+        <div class="float-badge fb-purple"><i class="fa-solid fa-bolt"></i></div>
+        <div class="float-badge fb-blue"><i class="fa-solid fa-star"></i></div>
+
+        <div class="stat stat-projects"><strong class="grad" data-count="3">0</strong><small>Projects</small></div>
+        <div class="stat stat-years"><strong class="grad" data-count="8" data-suffix="+">0</strong><small>Skills</small></div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="page-head">
+        <span class="eyebrow">Featured</span>
+        <h1>Recent <span class="grad">projects</span></h1>
+      </div>
+      <div class="row g-3" id="home-projects"></div>
+      <p class="text-center mt-4"><a href="projects.html" class="btn btn-ghost">See all projects</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Kinley Gyeltshen. Built with HTML, CSS &amp; JavaScript.</p>
+  </footer>
+  <img src="media/mascot.gif" alt="Animated mascot walking" class="mascot">
+  <button type="button" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Bootstrap JS — last, just before your own scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
