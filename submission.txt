@@ -1,4 +1,4 @@
 Student Name:
 Student ID:
-GitHub Repository Link:
-Deployed Website Link
+GitHub Repository Link:https://github.com/kinleygyeltshen1907-bot/My_portfolio-
+Deployed Website Link:https://kinleygyeltshen1907-bot.github.io/My_portfolio-/
