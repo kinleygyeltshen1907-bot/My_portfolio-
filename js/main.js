@@ -325,6 +325,105 @@ function bindBackToTop() {
   });
 }
 
+// ----- contact form (only runs on contact.html) -----
+const CONTACT_EMAIL = "kinleygyeltshen1907@gmail.com";
+
+const patterns = {
+  fullname: /^[A-Za-z ]{3,50}$/,
+  email: /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i,
+  subject: /^.{3,80}$/,
+  message: /^[\s\S]{10,500}$/,
+};
+
+const messages = {
+  fullname: "Enter your name (letters and spaces, 3-50 characters)",
+  email: "Enter a valid email address",
+  subject: "Subject must be 3-80 characters",
+  message: "Message must be 10-500 characters",
+};
+
+function showError(id, msg) {
+  const span = document.getElementById("err-" + id);
+  const field = document.getElementById(id);
+  if (span) span.textContent = msg;
+  if (field) field.classList.add("is-invalid");
+}
+
+function clearErrors() {
+  document.querySelectorAll(".error").forEach(function (s) { s.textContent = ""; });
+  document.querySelectorAll(".is-invalid").forEach(function (f) { f.classList.remove("is-invalid"); });
+}
+
+function showStatus(text, type) {
+  const box = document.getElementById("formStatus");
+  if (!box) return;
+  box.textContent = text;
+  box.className = "form-status " + type;
+}
+
+function updateCharCount() {
+  const message = document.getElementById("message");
+  const count = document.getElementById("charCount");
+  if (message && count) count.textContent = message.value.length + "/500";
+}
+
+function validateForm(e) {
+  e.preventDefault(); // there is no server, so we handle the submit ourselves
+  clearErrors();
+  showStatus("", "");
+  let ok = true;
+
+  for (const field of ["fullname", "email", "subject", "message"]) {
+    const el = document.getElementById(field);
+    const value = el ? el.value.trim() : "";
+    if (!patterns[field].test(value)) {
+      showError(field, messages[field]);
+      ok = false;
+    }
+  }
+
+  if (!ok) {
+    showStatus("Please fix the errors above.", "err");
+    return false;
+  }
+
+  const name = document.getElementById("fullname").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // open Gmail's compose window with the message filled in
+  const gmailUrl =
+    "https://mail.google.com/mail/?view=cm&fs=1" +
+    "&to=" + encodeURIComponent(CONTACT_EMAIL) +
+    "&su=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(message + "\n\nFrom: " + name + " <" + email + ">");
+  window.open(gmailUrl, "_blank", "noopener");
+
+  showStatus("Thanks! Gmail should open in a new tab. Press Send there to finish.", "ok");
+  document.getElementById("contactForm").reset();
+  updateCharCount();
+  return ok;
+}
+
+function bindContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+  form.addEventListener("submit", validateForm);
+
+  const message = document.getElementById("message");
+  if (message) message.addEventListener("input", updateCharCount);
+
+  // clear a field's error as soon as the visitor edits it
+  document.querySelectorAll("#contactForm input, #contactForm textarea").forEach(function (el) {
+    el.addEventListener("input", function () {
+      el.classList.remove("is-invalid");
+      const span = document.getElementById("err-" + el.id);
+      if (span) span.textContent = "";
+    });
+  });
+}
+
 // ----- boot -----
 console.log("main.js is running");
 document.addEventListener("DOMContentLoaded", function () {
@@ -342,5 +441,6 @@ document.addEventListener("DOMContentLoaded", function () {
   renderEducation();
   renderCertifications();
   bindProjectFilters();
+  bindContactForm();
   console.log("Debug: main.js finished");
 });
